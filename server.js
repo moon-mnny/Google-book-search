@@ -7,16 +7,15 @@ const bodyparser = require("body-parser");
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-
+app.use(express.json());
 app.use(morgan("dev"));
-app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({ extended: true }));
+// app.use(bodyparser.json());
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-app.use(require("./routes"));
+app.use(routes);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
