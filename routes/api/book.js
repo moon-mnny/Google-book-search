@@ -15,8 +15,17 @@ router
 
 router
   .route("/:id")
-  .get(bookController.findById)
-  .put(bookController.update)
-  .delete(bookController.remove);
+  .get(async (req, res) => {
+    const book = await Book.findById(req.params.id);
+    res.json(book);
+  })
+  .put(async (req, res) => {
+    const result = await Book.findOneAndUpdate({ id: req.params.id }, req.body);
+    res.json(result);
+  })
+  .delete(async (req, res) => {
+    await Book.remove({ id: req.params.id });
+    res.send("deleted");
+  });
 
 module.exports = router;
