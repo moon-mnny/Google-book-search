@@ -12,8 +12,8 @@ Google Book Search is a website app that user can search books of their interest
 
 ## Images
 
-<img src="./screenshot/Search" height="500" />
-<img src="./screenshot/Saved" height="500" />
+<img src="./screenshot/Search.png" height="500" />
+<img src="./screenshot/Saved.png" height="500" />
 
 ## Technical Overview
 
