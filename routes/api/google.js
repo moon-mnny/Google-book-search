@@ -6,7 +6,15 @@ router.get("/:query", (req, res) => {
   axios
     .get(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
     .then((results) => {
-      console.log(results.data.items);
+      results.data.items.filter(
+        (result) =>
+          result.volumeInfo.title &&
+          result.volumeInfo.infoLink &&
+          result.volumeInfo.authors &&
+          result.volumeInfo.description &&
+          result.volumeInfo.imageLinks &&
+          result.volumeInfo.imageLinks.thumbnail
+      );
     });
 });
 module.exports = router;
