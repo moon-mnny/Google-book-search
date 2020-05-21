@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(express.static("client"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/google", {
-  useCreateIndex: true,
+  // useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
