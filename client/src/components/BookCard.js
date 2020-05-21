@@ -1,4 +1,6 @@
 import React from "react";
+import Container from "@material-ui/core/Container";
+import { Row, Col } from "../components/Grid";
 
 function BookCard({
   title,
@@ -10,7 +12,7 @@ function BookCard({
   Button,
 }) {
   return (
-    <ListItem>
+    <Container>
       <Row className="flex-wrap-reverse">
         <Col size="md-8">
           <h3 className="font-italic">{title}</h3>
@@ -47,7 +49,7 @@ function BookCard({
           <p>{description}</p>
         </Col>
       </Row>
-    </ListItem>
+    </Container>
   );
 }
 export default BookCard;

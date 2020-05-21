@@ -3,12 +3,10 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import SearchIcon from "@material-ui/icons/Search";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -110,11 +108,7 @@ export default function Navbar() {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <ButtonGroup
-              variant="text"
-              color="white"
-              aria-label="text primary button group"
-            >
+            <ButtonGroup variant="text" aria-label="text primary button group">
               <Button style={{ color: "white" }}>Search</Button>
               <Button style={{ color: "white" }}>Saved</Button>
             </ButtonGroup>
