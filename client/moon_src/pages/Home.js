@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
-import Card from "../components/Card";
-import Form from "../components/Form";
-import Book from "../components/Book";
-import Footer from "../components/Footer";
-import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
-import { List } from "../components/List";
-
+import SearchBar from "../components/SearchBar";
+import BookCard from "../components/BookCard";
+import API from "../utils/API";
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: [],
+      query: "",
+    };
+  }
   state = {
     books: [],
-    q: "",
+    query: "",
     message: "Search For A Book To Begin!",
   };
 
@@ -39,7 +42,6 @@ class Home extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state.q);
     this.getBooks();
   };
 
@@ -62,32 +64,28 @@ class Home extends Component {
       <Container>
         <Row>
           <Col size="md-12">
-            <Jumbotron>
-              <h1 className="text-center">
-                <strong>Google Books Search</strong>
-              </h1>
-              <h2 className="text-center">
-                Search for and Save Books of Interest.
-              </h2>
-            </Jumbotron>
+            <Jumbotron
+              title="Google Books Search"
+              subtitle="Search for and Save Books of Interest"
+            />
           </Col>
           <Col size="md-12">
-            <Card title="Book Search" icon="far fa-book">
-              <Form
+            <Container title="Book Search" icon="far fa-book">
+              <SearchBar
                 handleInputChange={this.handleInputChange}
                 handleFormSubmit={this.handleFormSubmit}
-                q={this.state.q}
+                query={this.state.query}
               />
-            </Card>
+            </Container>
           </Col>
         </Row>
         <Row>
           <Col size="md-12">
-            <Card title="Results">
+            <Container title="Results">
               {this.state.books.length ? (
-                <List>
+                <div>
                   {this.state.books.map((book) => (
-                    <Book
+                    <BookCard
                       key={book.id}
                       title={book.volumeInfo.title}
                       subtitle={book.volumeInfo.subtitle}
@@ -105,14 +103,14 @@ class Home extends Component {
                       )}
                     />
                   ))}
-                </List>
+                </div>
               ) : (
                 <h2 className="text-center">{this.state.message}</h2>
               )}
-            </Card>
+            </Container>
           </Col>
         </Row>
-        <Footer />
+        {/* <Footer /> */}
       </Container>
     );
   }

@@ -6,7 +6,8 @@ router.get("/:query", (req, res) => {
   axios
     .get(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
     .then((results) => {
-      results.data.items.filter(
+      const bookitems = results.data.items;
+      bookitems.filter(
         (result) =>
           result.volumeInfo.title &&
           result.volumeInfo.infoLink &&
@@ -15,6 +16,7 @@ router.get("/:query", (req, res) => {
           result.volumeInfo.imageLinks &&
           result.volumeInfo.imageLinks.thumbnail
       );
+      res.json(bookitems);
     });
 });
 module.exports = router;
